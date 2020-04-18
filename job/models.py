@@ -25,7 +25,7 @@ class Resource(models.Model):
     url = models.CharField(max_length=250, default='')
     category = models.CharField(max_length=250, default='')
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(
+    created_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='resource')
 
 
@@ -35,11 +35,13 @@ class Level(models.Model):
     category = models.CharField(max_length=250, default='')
     salary = models.CharField(max_length=250, default='')
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='resource')
+    created_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='level')
 
 class Comments(models.Model):
     comment = models.TextField(default='')
+    level = models.ForeignKey(
+        Level, on_delete=models.CASCADE, related_name='comment')
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='resource')
+    created_by = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='comment')
