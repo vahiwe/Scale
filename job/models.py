@@ -29,3 +29,17 @@ class Resource(models.Model):
         User, on_delete=models.CASCADE, related_name='resource')
 
 
+class Level(models.Model):
+    title = models.CharField(max_length=250, default='')
+    description = models.TextField(default='')
+    category = models.CharField(max_length=250, default='')
+    salary = models.CharField(max_length=250, default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='resource')
+
+class Comments(models.Model):
+    comment = models.TextField(default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='resource')
