@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listings</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{ static('css/style.css') }}">
 </head>
 
 <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">
-      <img src="/images/logo.svg" alt="" srcset="">
+      <img src="{{ static('img/logo.svg')}}" alt="" srcset="">
 
     </h5>
     <nav class="my-2 my-md-0 mr-md-3">
@@ -20,7 +20,7 @@
       <a class="p-2 text-dark" href="#">Level Up</a>
       <a class="p-2 text-dark" href="#">Resources</a>
     </nav>
-    <a class="btn btn-outline-primary" href="#">LogOut</a>
+    <a class="btn btn-outline-primary" href="{{ url('logout') }}">LogOut</a>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
@@ -31,7 +31,7 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="row">
-        <h2 class="font-weight-bold">10 Remote Jobs</h2>
+        <h2 class="font-weight-bold">{{ jobs.count() }} Remote Jobs</h2>
       </div>
       <div class="row mt-3">
         <h4>Pick Category</h4>
@@ -45,9 +45,10 @@
           </select>
         </form>
       </div>
+      {% for job in jobs %}
       <div id="job-listings">
         <div class="row job mt-3">
-          <h3 class="font-weigth-bold">Title</h3>
+          <h3 class="font-weigth-bold">{{ job.position }}</h3>
 
         </div>
         <div class="row">
@@ -55,85 +56,36 @@
             <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
           </svg>
 
-          <div class="ml-3 h5" id="company-name">Name Of Company</div>
+          <div class="ml-3 h5" id="company-name">{{ job.company }}</div>
 
         </div>
         <div class="row" id="description">
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quod voluptatum est! Consectetur natus atque
-            ipsum asperiores cupiditate? Exercitationem assumenda a obcaecati sapiente delectus officiis placeat porro
-            id itaque sequi?....</p>
+          <p class="">{{ job.description }}</p>
 
-
+       <p> <a href="{{ job. url }}">{{ job.url }}</a> &nbsp &nbsp <a href="{{ job. url }}">Apply</a> </p>
         </div>
       </div>
-      <div id="job-listings">
-        <div class="row job mt-3">
-          <h3 class="font-weigth-bold">Title</h3>
-
-        </div>
-        <div class="row">
-          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
-          </svg>
-
-          <div class="ml-3 h5" id="company-name">Name Of Company</div>
-
-        </div>
-        <div class="row" id="description">
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quod voluptatum est! Consectetur natus atque
-            ipsum asperiores cupiditate? Exercitationem assumenda a obcaecati sapiente delectus officiis placeat porro
-            id itaque sequi?....</p>
-
-
-        </div>
-      </div>
-      <div id="job-listings">
-        <div class="row job mt-3">
-          <h3 class="font-weigth-bold">Title</h3>
-
-        </div>
-        <div class="row">
-          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
-          </svg>
-
-          <div class="ml-3 h5" id="company-name">Name Of Company</div>
-
-        </div>
-        <div class="row" id="description">
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quod voluptatum est! Consectetur natus atque
-            ipsum asperiores cupiditate? Exercitationem assumenda a obcaecati sapiente delectus officiis placeat porro
-            id itaque sequi?....</p>
-
-
-        </div>
-      </div>
-      <div id="job-listings">
-        <div class="row job mt-3">
-          <h3 class="font-weigth-bold">Title</h3>
-
-        </div>
-        <div class="row">
-          <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
-          </svg>
-
-          <div class="ml-3 h5" id="company-name">Name Of Company</div>
-
-        </div>
-        <div class="row" id="description">
-
-          <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. A quod voluptatum est! Consectetur natus
-            atque
-            ipsum asperiores cupiditate? Exercitationem assumenda a obcaecati sapiente delectus officiis placeat porro
-            id itaque sequi?....</p>
-
-
-        </div>
-      </div>
+      {% endfor %}
+      {% if is_paginated %}
+<div class="container">
+    <div class="row justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous() %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{ page_obj.previous_page_number() }}">Previous</a></li>
+                {% endif %}
+                <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of
+                        {{ page_obj.paginator.num_pages }}</a></li>
+                {% if page_obj.has_next() %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number() }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}
     </div>
   </div>
 </div>
