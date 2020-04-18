@@ -23,12 +23,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('home', views.home, name='home'),
+    path('jobs', views.ShowAllJobsView.as_view(), name='jobs'),
     path('', views.home, name='index'),
     path('admin/', admin.site.urls),
 
     re_path(r'^signup/$', views.signup, name='signup'),
     re_path(r'^login/$',
-            auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+            auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name='login'),
     re_path(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
 
     re_path(r'^reset/$',
