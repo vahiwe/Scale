@@ -10,7 +10,7 @@ class Job(models.Model):
     company = models.CharField(max_length=255, default='')
     position = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
-    url = models.CharField(max_length=255, default='')
+    url = models.TextField(default='')
     visible = models.BooleanField(default=False)
 
 class Resource(models.Model):
@@ -22,7 +22,7 @@ class Resource(models.Model):
     image = models.ImageField(upload_to='images/')
     title = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
-    url = models.CharField(max_length=255, default='')
+    url = models.TextField(default='')
     category = models.CharField(max_length=255, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
