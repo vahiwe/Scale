@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listings</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ static('css/style.css')}}">
+</head>
+
+<body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">
+      <img src="{{ static('img/logo.svg')}}" alt="" srcset="">
+
+    </h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark active" href="{{ url('remote') }}">Remote Jobs</a>
+      <a class="p-2 text-dark" href="{{ url('levelup') }}">Level Up</a>
+      <a class="p-2 text-dark" href="{{ url('resource') }}">Resources</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="{{ url('logout') }}">LogOut</a>
+  </div>
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="row">
+          <h4 class="font-weight-bold">Remote Resources</h4>
+        </div>
+        <div class="row mt-3 ">
+          <div class="col-md-8">
+            <h6 class="font-weight-bold">Pick Category</h6>
+
+          </div>
+
+          <div class="col-md-4 pull-right">
+            <form action="" class="pull-right">
+              <select class="custom-select">
+                <option selected>Open this select menu</option>
+                <option value="1">Marketing</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        <div id="job-listings">
+          <div class="row job mt-3">
+            <h3 class="font-weigth-bold">Title</h3>
+
+          </div>
+          <div class="row">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
+            </svg>
+
+            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">Name Of Company</div>
+            <div class="col-md-3 h6 pt-2" id="company-name">
+              <p>2 Min Ago</p>
+            </div>
+
+
+          </div>
+
+          <div class="row jumbotron">
+
+          </div>
+          <div class="row" id="description">
+
+            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non arcu ac quam tempus lobortis
+              vitae ut magna. Nullam molestie, lectus non convallis ultrices, lectus ante facilisis sem, et rhoncus odio
+              ligula at dui. Nunc eget euismod augue. Donec id lorem ac augue vehicula euismod. Aliquam luctus laoreet
+              volutpat. Aenean euismod commodo urna et fermentum. Mauris ac porta mauris. Donec non tortor ut sem
+              fermentum pretium id id augue. Duis dignissim, magna ac laoreet elementum, sem enim tincidunt urna, sit
+              amet convallis turpis diam sit amet ante. Donec ac lacus sed justo aliquet aliquet. Fusce turpis urna,
+              semper euismod sem sed, faucibus imperdiet orci.</p>
+
+
+          </div>
+          <p><a href="#">glideapps.com/app/6HJGYwMoNQv4hEidMuwf</a></p>
+        </div>
+
+        <div id="job-listings">
+          <div class="row job mt-3">
+            <h3 class="font-weigth-bold">Title</h3>
+
+          </div>
+          <div class="row">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
+            </svg>
+
+            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">Name Of Company</div>
+            <div class="col-md-3 h6 pt-2" id="company-name">
+              <p>2 Min Ago</p>
+            </div>
+
+
+          </div>
+
+          <div class="row jumbotron">
+
+          </div>
+          <div class="row" id="description">
+
+            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non arcu ac quam tempus lobortis
+              vitae ut magna. Nullam molestie, lectus non convallis ultrices, lectus ante facilisis sem, et rhoncus odio
+              ligula at dui. Nunc eget euismod augue. Donec id lorem ac augue vehicula euismod. Aliquam luctus laoreet
+              volutpat. Aenean euismod commodo urna et fermentum. Mauris ac porta mauris. Donec non tortor ut sem
+              fermentum pretium id id augue. Duis dignissim, magna ac laoreet elementum, sem enim tincidunt urna, sit
+              amet convallis turpis diam sit amet ante. Donec ac lacus sed justo aliquet aliquet. Fusce turpis urna,
+              semper euismod sem sed, faucibus imperdiet orci.</p>
+
+
+          </div>
+          <p><a href="#">glideapps.com/app/6HJGYwMoNQv4hEidMuwf</a></p>
+        </div>
+
+        <div id="job-listings">
+          <div class="row job mt-3">
+            <h3 class="font-weigth-bold">Title</h3>
+
+          </div>
+          <div class="row">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
+            </svg>
+
+            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">Name Of Company</div>
+            <div class="col-md-3 h6 pt-2" id="company-name">
+              <p>2 Min Ago</p>
+            </div>
+
+
+          </div>
+
+          <div class="row jumbotron">
+
+          </div>
+          <div class="row" id="description">
+
+            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non arcu ac quam tempus lobortis
+              vitae ut magna. Nullam molestie, lectus non convallis ultrices, lectus ante facilisis sem, et rhoncus odio
+              ligula at dui. Nunc eget euismod augue. Donec id lorem ac augue vehicula euismod. Aliquam luctus laoreet
+              volutpat. Aenean euismod commodo urna et fermentum. Mauris ac porta mauris. Donec non tortor ut sem
+              fermentum pretium id id augue. Duis dignissim, magna ac laoreet elementum, sem enim tincidunt urna, sit
+              amet convallis turpis diam sit amet ante. Donec ac lacus sed justo aliquet aliquet. Fusce turpis urna,
+              semper euismod sem sed, faucibus imperdiet orci.</p>
+
+
+          </div>
+          <p><a href="#">glideapps.com/app/6HJGYwMoNQv4hEidMuwf</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

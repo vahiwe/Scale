@@ -5,3 +5,14 @@ body {
   width: 100%;
 
 }
+
+.jumbotron-blue{
+  /* color: #FFFFFF; */
+  background-color:#1A64F2 !important;
+  }
+
+  .btn-outline-custom{
+
+    color: #fafafa;
+    border-color: #fafafa;
+  }
