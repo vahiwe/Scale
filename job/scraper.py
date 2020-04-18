@@ -137,7 +137,10 @@ class IndeedAPIClient():
                     date = job.find_all("span", class_="date")[0].string
                     date = date.replace('+','')
                     date = self.get_past_date(date)
-                    location = job.find_all("span", class_="location")[0].string
+                    try:
+                        location = job.find_all("span", class_="location")[0].string
+                    except IndexError:
+                        location = ''
 
                     item = {'position': position, 'url': url, 'company': company, 'description': description, 'id': id, 'date': date, 'location': location}
                     items.append(item)
