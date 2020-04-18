@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
-from jobs.models import Jobs
+from job.models import Job
 # Create your views here.
 def error_404_view(request, exception):
     return render(request, 'error_404.html')
@@ -32,7 +32,7 @@ def home(request):
 
 @method_decorator(login_required, name='dispatch')
 class ShowAllJobsView(ListView):
-    model = Jobs
+    model = Job
     context_object_name = 'jobs'
     template_name = 'listings.html'
     paginate_by = 10

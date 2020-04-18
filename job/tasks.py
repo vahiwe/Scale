@@ -1,4 +1,4 @@
-from jobs.commands.remoteok import Command
+from job.commands.remoteok import Command
 from celery import shared_task
 command = Command()
 

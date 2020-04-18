@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'crispy_forms',
     'mail_templated',
-    'jobs',
+    'job',
     'django_celery_beat',
 ]
 

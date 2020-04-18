@@ -3,9 +3,9 @@ import logging
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
-from jobs.models import Jobs
+from job.models import Job
 
-from jobs.scraper import RemoteOKAPIClient, IndeedAPIClient
+from job.scraper import RemoteOKAPIClient, IndeedAPIClient
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ class Command(BaseCommand):
         for data in self.client.getjobs():
             if 'id' not in data:
                 continue
-            job, _ = Jobs.objects.get_or_create(id=data['id'])
+            job, _ = Job.objects.get_or_create(id=data['id'])
             job.id = data.get('id','')
             job.slug = data.get('slug','')
             job.epoch = data.get('epoch','')
@@ -46,7 +46,7 @@ class Command(BaseCommand):
         for data in self.indeedclient.getjobs():
             if 'id' not in data:
                 continue
-            job, _ = Jobs.objects.get_or_create(id=data['id'])
+            job, _ = Job.objects.get_or_create(id=data['id'])
             job.id = data.get('id','')
             job.slug = data.get('slug','')
             job.epoch = data.get('epoch','')
