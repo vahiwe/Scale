@@ -9,7 +9,7 @@ from django.views.generic import ListView
 from job.models import Job
 # Create your views here.
 def error_404_view(request, exception):
-    return render(request, 'error_404.html')
+    return redirect('home')
 
 
 def signup(request):
@@ -34,9 +34,17 @@ def home(request):
 class ShowAllJobsView(ListView):
     model = Job
     context_object_name = 'jobs'
-    template_name = 'listings.html'
+    template_name = 'remote-jobs.html'
     paginate_by = 10
 
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.order_by('-date')
+
+@login_required
+def levelup(request):
+    return render(request, 'level-up.html')
+
+@login_required
+def resource(request):
+    return render(request, 'remote-resources.html')

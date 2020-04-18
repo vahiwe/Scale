@@ -131,3 +131,4 @@ migrations/
 feedback.txt
 *egg-info/
 try.py
+static/

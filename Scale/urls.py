@@ -23,7 +23,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('home', views.home, name='home'),
-    path('jobs', views.ShowAllJobsView.as_view(), name='jobs'),
+    path('resource', views.resource, name='resource'),
+    path('levelup', views.levelup, name='levelup'),
+    path('remote', views.ShowAllJobsView.as_view(), name='remote'),
     path('', views.home, name='index'),
     path('admin/', admin.site.urls),
 
@@ -52,3 +54,5 @@ urlpatterns = [
                 template_name='password_reset_complete.html'),
             name='password_reset_complete')
 ]
+
+handler404 = 'job.views.error_404_view'

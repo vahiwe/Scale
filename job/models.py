@@ -21,6 +21,7 @@ class Resource(models.Model):
     )
     image = models.ImageField(upload_to='images/')
     title = models.CharField(max_length=255, default='')
+    company = models.CharField(max_length=255, default='')
     description = models.TextField(default='')
     url = models.TextField(default='')
     category = models.CharField(max_length=255, default='')
