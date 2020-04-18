@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('home', views.home, name='home'),
     path('resource', views.resource, name='resource'),
-    path('levelup', views.levelup, name='levelup'),
+    path('levelup', views.ShowAllLevelView.as_view(), name='levelup'),
     path('remote', views.ShowAllJobsView.as_view(), name='remote'),
     path('', views.home, name='index'),
     path('admin/', admin.site.urls),

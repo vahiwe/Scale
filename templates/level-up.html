@@ -47,14 +47,15 @@
             </form>
           </div>
         </div>
+        {% for level in levels %}
         <div class="row mt-4">
           <div id="job-listings" class="jumbotron jumbotron-blue">
             <div class="row ">
               <div class="col-md-8">
-                <h4 class="font-weigth-bold text-white">Job Category: Marketing</h4>
+                <h4 class="font-weigth-bold text-white">Job Category: {{ level.category }}</h4>
               </div>
               <div class="col-md-3">
-                <button type="button" class="btn btn-outline-custom">Average Salary: </button>
+                <button type="button" class="btn btn-outline-custom">Average Salary: {{ level.salary }} </button>
 
 
               </div>
@@ -63,14 +64,7 @@
 
             <div class="row mt-4" id="description">
 
-              <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet reiciendis ipsam eos
-                molestias veniam commodi minima, aliquam, soluta architecto libero hic aperiam. Nam recusandae vero aut
-                esse cupiditate totam, cumque obcaecati accusamus laborum dolor ratione accusantium non ut asperiores
-                sed. Cum ad odit, facere nobis earum ratione officiis minus ab minima blanditiis nisi magni repellat,
-                rem corrupti, laboriosam voluptas quia! Aperiam eos assumenda ipsum ab velit! Molestiae recusandae rerum
-                maxime, nobis dolorem unde fugit perferendis praesentium repellendus officia facere ipsam natus itaque
-                labore quibusdam iure voluptates architecto pariatur nisi velit earum odio quos neque. Fuga corrupti
-                nulla quaerat! Voluptatum, non!</p>
+              <p class="text-white">{{ level.description }}</p>
 
 
             </div>
@@ -78,26 +72,11 @@
 
           </div>
         </div>
-        <div class="row mt-4" id="sub-skill">
-          <h4>Sub Skill</h4>
-          <p class="text-dark">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates porro praesentium error cum eaque
-            consequuntur ad velit, libero laudantium. Accusamus magni nam quas non atque debitis culpa optio, beatae
-            neque minima inventore illum eveniet. Voluptate illum harum aperiam eius nostrum ex, impedit ut optio
-            reiciendis laudantium, mollitia voluptatem autem praesentium, quasi assumenda qui. Cum voluptas tempore
-            porro doloremque ea, omnis temporibus aliquam ad fuga placeat distinctio. Quae totam corrupti earum at
-            ducimus doloremque accusantium ratione, distinctio sed praesentium qui molestias esse iure, obcaecati
-            accusamus quisquam. Voluptatibus veritatis eveniet deleniti quidem in similique, itaque laudantium
-            voluptas quam minus ipsam quis qui?
-          </p>
-
-          <p class="font-weight-bold">Average Pay Increase: $100</p>
-        </div>
-
         <p>
           <a href="#"> Add a comment</a>,
           <a href="#"> Ask a question</a>
         </p>
+        {% endfor %}
 
       </div>
     </div>

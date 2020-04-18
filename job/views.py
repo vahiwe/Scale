@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
-from job.models import Job
+from job.models import Job, Resource, Level, Comments
 # Create your views here.
 def error_404_view(request, exception):
     return redirect('home')
@@ -41,9 +41,17 @@ class ShowAllJobsView(ListView):
         queryset = super().get_queryset()
         return queryset.order_by('-date')
 
-@login_required
-def levelup(request):
-    return render(request, 'level-up.html')
+@method_decorator(login_required, name='dispatch')
+class ShowAllLevelView(ListView):
+    model = Level
+    context_object_name = 'levels'
+    template_name = 'level-up.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-created_at')
+
 
 @login_required
 def resource(request):
