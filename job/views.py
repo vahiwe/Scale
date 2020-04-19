@@ -1,12 +1,14 @@
 from django.contrib.auth import login as auth_login
-from django.shortcuts import render, redirect
-from .forms import SignUpForm
+from annoying.functions import get_object_or_None
+from django.shortcuts import render, redirect, HttpResponse, reverse
+from .forms import SignUpForm, LevelCategoryForm, ResourceCategoryForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
-from job.models import Job, Resource, Level, Comments
+from job.models import Job, Resource, Level, Comments, LevelUpCategory, ResourceCategory
+import json
 # Create your views here.
 def error_404_view(request, exception):
     return redirect('home')
@@ -48,11 +50,56 @@ class ShowAllLevelView(ListView):
     template_name = 'level-up.html'
     paginate_by = 10
 
+    def get(self, *args, **kwargs):
+        categoryid = self.kwargs.get("id", None)
+        if categoryid is not None:
+            category = get_object_or_None(LevelUpCategory, id=categoryid)
+            if category is None:
+                return redirect("levelup")
+        return super(ShowAllLevelView, self).get(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = LevelCategoryForm()
+        return context
+
     def get_queryset(self):
         queryset = super().get_queryset()
+        categoryid = self.kwargs.get("id", None)
+        if categoryid is not None:
+            category = get_object_or_None(LevelUpCategory, id=categoryid)
+            queryset = queryset.filter(category=category)
         return queryset.order_by('-created_at')
 
 
-@login_required
-def resource(request):
-    return render(request, 'remote-resources.html')
+
+@method_decorator(login_required, name='dispatch')
+class ShowAllResourcesView(ListView):
+    model = Resource
+    context_object_name = 'resources'
+    template_name = 'remote-resources.html'
+    paginate_by = 10
+
+    def get(self, *args, **kwargs):
+        categoryid = self.kwargs.get("id", None)
+        if categoryid is not None:
+            category = get_object_or_None(ResourceCategory, id=categoryid)
+            if category is None:
+                return redirect("resource")
+        return super(ShowAllResourcesView, self).get(*args, **kwargs)
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ResourceCategoryForm()
+        return context
+
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        categoryid = self.kwargs.get("id", None)
+        if categoryid is not None:
+            category = get_object_or_None(ResourceCategory, id=categoryid)
+            queryset = queryset.filter(category=category)
+        return queryset.order_by('-created_at')
+        

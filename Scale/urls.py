@@ -23,8 +23,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('home', views.home, name='home'),
-    path('resource', views.resource, name='resource'),
+    path('resource', views.ShowAllResourcesView.as_view(), name='resource'),
+    path('resource/<int:id>', views.ShowAllResourcesView.as_view(), name='resources'),
     path('levelup', views.ShowAllLevelView.as_view(), name='levelup'),
+    path('levelup/<int:id>', views.ShowAllLevelView.as_view(), name='levelups'),
     path('remote', views.ShowAllJobsView.as_view(), name='remote'),
     path('', views.home, name='index'),
     path('admin/', admin.site.urls),
@@ -54,5 +56,8 @@ urlpatterns = [
                 template_name='password_reset_complete.html'),
             name='password_reset_complete')
 ]
+
+urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
 
 handler404 = 'job.views.error_404_view'
