@@ -13,7 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from job import views
+from job import views as jobviews
+from level import views as levelviews
+from resource import views as resourceviews
+from user import views as userviews
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, re_path
@@ -22,16 +25,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('home', views.home, name='home'),
-    path('resource', views.ShowAllResourcesView.as_view(), name='resource'),
-    path('resource/<int:id>', views.ShowAllResourcesView.as_view(), name='resources'),
-    path('levelup', views.ShowAllLevelView.as_view(), name='levelup'),
-    path('levelup/<int:id>', views.ShowAllLevelView.as_view(), name='levelups'),
-    path('remote', views.ShowAllJobsView.as_view(), name='remote'),
-    path('', views.home, name='index'),
+    path('home', jobviews.ShowAllJobsView.as_view(), name='home'),
+    path('resource', resourceviews.ShowAllResourcesView.as_view(), name='resource'),
+    path('resource/<int:id>', resourceviews.ShowAllResourcesView.as_view(), name='resources'),
+    path('levelup', levelviews.ShowAllLevelView.as_view(), name='levelup'),
+    path('levelup/<int:id>', levelviews.ShowAllLevelView.as_view(), name='levelups'),
+    path('remote', jobviews.ShowAllJobsView.as_view(), name='remote'),
+    path('', jobviews.ShowAllJobsView.as_view(), name='index'),
     path('admin/', admin.site.urls),
 
-    re_path(r'^signup/$', views.signup, name='signup'),
+    re_path(r'^signup/$', userviews.signup, name='signup'),
     re_path(r'^login/$',
             auth_views.LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name='login'),
     re_path(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),

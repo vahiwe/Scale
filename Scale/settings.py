@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'mail_templated',
     'job',
+    'user',
+    'resource',
+    'level',
+    'comments',
     'django_celery_beat',
 ]
 

@@ -64,7 +64,11 @@
         </p>
         {% endfor %}
         {% else %}
+        {% if request.path.split('/')[-1]|int != 0 %}
         <h4 class="font-weight-bold">Sorry there is no level up information for this category</h4>
+        {% else %}
+        <h4 class="font-weight-bold">Sorry there is no level up information Available</h4>
+         {% endif %}
         {% endif %}
       {% if is_paginated %}
 <div class="container">

@@ -20,7 +20,11 @@
       <a class="p-2 text-dark" href="{{ url('levelup') }}">Level Up</a>
       <a class="p-2 text-dark" href="{{ url('resource') }}">Resources</a>
     </nav>
+    {% if user.is_authenticated %}
     <a class="btn btn-outline-primary" href="{{ url('logout') }}">LogOut</a>
+    {% else %}
+    <a class="btn btn-outline-primary" href="{{ url('login') }}">LogIn</a>
+    {% endif %}
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
@@ -31,7 +35,7 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="row">
-        <h2 class="font-weight-bold">{{ jobs.count() }} Remote Jobs</h2>
+        <h2 class="font-weight-bold">{{ total }} Remote Jobs</h2>
       </div>
       <div class="row mt-3">
         <h4>Pick Category</h4>
@@ -45,6 +49,7 @@
           </select>
         </form>
       </div>
+      {% if jobs.count() > 0 %}
       {% for job in jobs %}
       <div id="job-listings" class="card card-body mb-3 mt-3 justify-content-center">
         <div class="row job mt-3">
@@ -67,6 +72,9 @@
         </div>
       </div>
       {% endfor %}
+      {% else %}
+      <h4 class="font-weight-bold">Sorry there is no level up information for this category</h4>
+      {% endif %}
       {% if is_paginated %}
 <div class="container">
     <div class="row justify-content-center">
