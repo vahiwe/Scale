@@ -30,26 +30,14 @@
         <div class="row">
           <h4 class="font-weight-bold">Remote Resources</h4>
         </div>
-        <div class="row mt-3 ">
-          <div class="col-md-8">
-            <h6 class="font-weight-bold">Pick Category</h6>
+        
 
-          </div>
-
-          <div class="col-md-4 pull-right">
-            <form action="" class="pull-right">
-              <select class="custom-select">
-                <option selected>Open this select menu</option>
-                <option value="1">Marketing</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </form>
-          </div>
-        </div>
+        {% include 'includes/form.html' %}
+        {% if resources.count() > 0 %}
+        {% for resource in resources %}
         <div id="job-listings">
           <div class="row job mt-3">
-            <h3 class="font-weigth-bold">Title</h3>
+            <h3 class="font-weigth-bold">{{ resource.title }}</h3>
 
           </div>
           <div class="row">
@@ -57,104 +45,48 @@
               <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
             </svg>
 
-            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">Name Of Company</div>
+            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">{{resource.company}}</div>
             <div class="col-md-3 h6 pt-2" id="company-name">
-              <p>2 Min Ago</p>
+              <p>{{ naturaltime(resource.created_at) }}</p>
             </div>
 
 
           </div>
 
           <div class="row jumbotron">
-
+          <img src="{{ resource.image.url }}" style="max-width: 100%; max-height: 100%; display: block;">
           </div>
           <div class="row" id="description">
 
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non arcu ac quam tempus lobortis
-              vitae ut magna. Nullam molestie, lectus non convallis ultrices, lectus ante facilisis sem, et rhoncus odio
-              ligula at dui. Nunc eget euismod augue. Donec id lorem ac augue vehicula euismod. Aliquam luctus laoreet
-              volutpat. Aenean euismod commodo urna et fermentum. Mauris ac porta mauris. Donec non tortor ut sem
-              fermentum pretium id id augue. Duis dignissim, magna ac laoreet elementum, sem enim tincidunt urna, sit
-              amet convallis turpis diam sit amet ante. Donec ac lacus sed justo aliquet aliquet. Fusce turpis urna,
-              semper euismod sem sed, faucibus imperdiet orci.</p>
+            <p class="">{{ resource.description }}</p>
 
 
           </div>
-          <p><a href="#">glideapps.com/app/6HJGYwMoNQv4hEidMuwf</a></p>
+          <p><a href="{{ resource.url }}">{{ resource.url }}</a></p>
         </div>
-
-        <div id="job-listings">
-          <div class="row job mt-3">
-            <h3 class="font-weigth-bold">Title</h3>
-
-          </div>
-          <div class="row">
-            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
-            </svg>
-
-            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">Name Of Company</div>
-            <div class="col-md-3 h6 pt-2" id="company-name">
-              <p>2 Min Ago</p>
-            </div>
-
-
-          </div>
-
-          <div class="row jumbotron">
-
-          </div>
-          <div class="row" id="description">
-
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non arcu ac quam tempus lobortis
-              vitae ut magna. Nullam molestie, lectus non convallis ultrices, lectus ante facilisis sem, et rhoncus odio
-              ligula at dui. Nunc eget euismod augue. Donec id lorem ac augue vehicula euismod. Aliquam luctus laoreet
-              volutpat. Aenean euismod commodo urna et fermentum. Mauris ac porta mauris. Donec non tortor ut sem
-              fermentum pretium id id augue. Duis dignissim, magna ac laoreet elementum, sem enim tincidunt urna, sit
-              amet convallis turpis diam sit amet ante. Donec ac lacus sed justo aliquet aliquet. Fusce turpis urna,
-              semper euismod sem sed, faucibus imperdiet orci.</p>
-
-
-          </div>
-          <p><a href="#">glideapps.com/app/6HJGYwMoNQv4hEidMuwf</a></p>
-        </div>
-
-        <div id="job-listings">
-          <div class="row job mt-3">
-            <h3 class="font-weigth-bold">Title</h3>
-
-          </div>
-          <div class="row">
-            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="21" cy="21" r="21" fill="#EEEEEE" />
-            </svg>
-
-            <div class="col-md-8 ml-3 h6 pt-2" id="company-name">Name Of Company</div>
-            <div class="col-md-3 h6 pt-2" id="company-name">
-              <p>2 Min Ago</p>
-            </div>
-
-
-          </div>
-
-          <div class="row jumbotron">
-
-          </div>
-          <div class="row" id="description">
-
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non arcu ac quam tempus lobortis
-              vitae ut magna. Nullam molestie, lectus non convallis ultrices, lectus ante facilisis sem, et rhoncus odio
-              ligula at dui. Nunc eget euismod augue. Donec id lorem ac augue vehicula euismod. Aliquam luctus laoreet
-              volutpat. Aenean euismod commodo urna et fermentum. Mauris ac porta mauris. Donec non tortor ut sem
-              fermentum pretium id id augue. Duis dignissim, magna ac laoreet elementum, sem enim tincidunt urna, sit
-              amet convallis turpis diam sit amet ante. Donec ac lacus sed justo aliquet aliquet. Fusce turpis urna,
-              semper euismod sem sed, faucibus imperdiet orci.</p>
-
-
-          </div>
-          <p><a href="#">glideapps.com/app/6HJGYwMoNQv4hEidMuwf</a></p>
-        </div>
-
+        {% endfor %}
+        {% else %}
+        <h4 class="font-weight-bold">Sorry there is no resource information for this category</h4>
+        {% endif %}
+              {% if is_paginated %}
+<div class="container">
+    <div class="row justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous() %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{ page_obj.previous_page_number() }}">Previous</a></li>
+                {% endif %}
+                <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of
+                        {{ page_obj.paginator.num_pages }}</a></li>
+                {% if page_obj.has_next() %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number() }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}
       </div>
     </div>
   </div>
@@ -162,6 +94,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    
+    {% if request.path.split('/')[-1]|int != 0 %}
+    document.getElementById("id_category").value = "{{ request.path.split('/')[-1]|int }}"
+    {% endif %}
+
+    function getresources() {
+    var categoryName = document.getElementById("id_category").value;
+    console.log(categoryName)
+    if (!isNaN(categoryName) && categoryName.trim().length > 0 ){
+    var url = "http://localhost:8000/resource/" + categoryName;
+    console.log(url)
+    window.location.href = url
+    }
+}  
+  </script>
 </body>
 
 </html>

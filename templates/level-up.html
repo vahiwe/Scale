@@ -30,23 +30,9 @@
         <div class="row">
           <h4 class="font-weight-bold">Level Up Your Salary</h4>
         </div>
-        <div class="row mt-3 ">
-          <div class="col-md-8">
-            <h6 class="font-weight-bold">Enter Job Category</h6>
-
-          </div>
-
-          <div class="col-md-3">
-            <form action="" class="pull-right">
-              <select class="custom-select">
-                <option selected>Open this select menu</option>
-                <option value="1">Marketing</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </form>
-          </div>
-        </div>
+        
+        {% include 'includes/form.html' %}
+        {% if levels.count() > 0 %}
         {% for level in levels %}
         <div class="row mt-4">
           <div id="job-listings" class="jumbotron jumbotron-blue">
@@ -77,6 +63,9 @@
           <a href="#"> Ask a question</a>
         </p>
         {% endfor %}
+        {% else %}
+        <h4 class="font-weight-bold">Sorry there is no level up information for this category</h4>
+        {% endif %}
       {% if is_paginated %}
 <div class="container">
     <div class="row justify-content-center">
@@ -103,6 +92,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    {% if request.path.split('/')[-1]|int != 0 %}
+    document.getElementById("id_category").value = "{{ request.path.split('/')[-1]|int }}"
+    {% endif %}
+    function getlevels() {
+    var categoryName = document.getElementById("id_category").value;
+    console.log(categoryName)
+    if (!isNaN(categoryName) && categoryName.trim().length > 0 ){
+    var url = "http://localhost:8000/levelup/" + categoryName;
+    console.log(url)
+    window.location.href = url
+    }
+}  
+  </script>
 </body>
 
 </html>
