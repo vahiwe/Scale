@@ -127,7 +127,6 @@ dmypy.json
 *.pyc
 __pycache__/
 media/
-migrations/
 feedback.txt
 *egg-info/
 try.py
