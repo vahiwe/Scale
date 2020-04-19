@@ -46,7 +46,7 @@
         </form>
       </div>
       {% for job in jobs %}
-      <div id="job-listings">
+      <div id="job-listings" class="card card-body mb-3 mt-3 justify-content-center">
         <div class="row job mt-3">
           <h3 class="font-weigth-bold">{{ job.position }}</h3>
 
@@ -63,7 +63,7 @@
 
           <p class="">{{ job.description }}</p>
 
-       <p> <a href="{{ job. url }}">{{ job.url }}</a> &nbsp &nbsp <a href="{{ job. url }}">Apply</a> </p>
+       <p> <a href="{{ job. url }}">{{ job.url }}</a> &nbsp &nbsp <a class="btn btn-primary" href="{{ job. url }}">Apply</a> </p>
         </div>
       </div>
       {% endfor %}
