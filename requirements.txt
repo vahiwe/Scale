@@ -13,6 +13,7 @@ psycopg2
 Pillow
 Unipath
 Markdown
+gunicorn
 bleach
 django-mail-templated
 chardet
