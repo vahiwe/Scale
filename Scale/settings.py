@@ -158,3 +158,8 @@ SESSION_COOKIE_AGE = 60 * 150 # set just 10 seconds to test
 SESSION_SAVE_EVERY_REQUEST = True
 # celery -A Scale worker -l info -P eventlet
 # celery -A Scale beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler 
+# heroku ps:scale worker=1 -a codementor123456
+# heroku ps:scale
+# worker: celery -A trydjango worker --beat --scheduler django --loglevel=info
+# heroku addons:info redis-trapezoidal-00212
+# heroku addons:create heroku-redis:hobby-dev -a codementor123456
